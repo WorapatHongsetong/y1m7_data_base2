@@ -1,0 +1,3 @@
+BLE IF NOT EXISTS members (id INTEGER PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL)")
+cursor.execute("CREATE TABLE IF NOT EXISTS books (id INTEGER PRIMARY KEY, title TEXT NOT NULL, author TEXT NOT NULL)")
+cursor.execute("CREATE TABLE IF NO
