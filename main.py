@@ -33,14 +33,20 @@ cursor.execute("DROP TABLE IF EXISTS rent_log")
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS rent_log (
         id INTEGER PRIMARY KEY,
-        renter TEXT NOT NULL,
         renter_id INTEGER NOT NULL,
-        title TEXT NOT NULL,
         book_id INTEGER NOT NULL,
         FOREIGN KEY(renter_id) REFERENCES members(id) ON DELETE CASCADE,
         FOREIGN KEY(book_id) REFERENCES books(id) ON DELETE CASCADE
     )
 """)
+
+rent_log_data = [
+    (1, 1),  # Josh,Fun Novel
+    (2, 2),  # Sean,Mathematic
+    (3, 3),  # Luke,Brew Tea
+]
+
+cursor.executemany("INSERT INTO rent_log (renter_id, book_id) VALUES (?, ?)", rent_log_data)
 
 
 con.commit()
